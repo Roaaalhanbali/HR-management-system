@@ -1,57 +1,86 @@
-// Employee Constructor Function
-function Employee(fullName, department, level) {
-  this.fullName = fullName;
-  this.department = department;
-  this.level = level;
-  this.employeeId = generateEmployeeId();
-  this.salary = this.generateSalary();
-}
-
-// Generate a random salary based on the employee level
-Employee.prototype.generateSalary = function () {
-  switch (this.level) {
-    case "Senior":
-      return Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500;
-    case "Mid-Senior":
-      return Math.floor(Math.random() * (1500 - 1000 + 1)) + 1000;
-    case "Junior":
-      return Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
-    default:
-      return 0;
+// Employee Data
+const employees = [
+  {
+      fullName: "Ahmad Basha",
+      level: "Senior"
+  },
+  {
+      fullName: "Yara Saddam",
+      level: "Junior"
+  },
+  {
+      fullName: "Bahaa Joho",
+      level: "Junior"
+  },
+  {
+      fullName: "Rand Mohanad",
+      level: "Mid-Senior"
   }
-};
+];
 
 // Generate a unique four-digit employee ID
 function generateEmployeeId() {
   return Math.floor(1000 + Math.random() * 9000);
 }
 
+// Calculate the salary range based on employee level
+function calculateSalaryRange(level) {
+  switch (level) {
+      case "Senior":
+          return { min: 1500, max: 2000 };
+      case "Mid-Senior":
+          return { min: 1000, max: 1500 };
+      case "Junior":
+          return { min: 500, max: 1000 };
+      default:
+          return { min: 0, max: 0 };
+  }
+}
+
+// Generate a random salary within the given range
+function generateSalary(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Render employee information in the table
-Employee.prototype.render = function () {
+function renderEmployees() {
   const employeeTable = document.getElementById("employee-table");
-  const tbody = employeeTable.querySelector("tbody");
+  const tbody = document.createElement("tbody");
 
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>${this.fullName}</td>
-    <td>${this.employeeId}</td>
-    <td>${this.department}</td>
-    <td>${this.level}</td>
-    <td>$${this.salary}</td>
-  `;
+  employees.forEach((employee) => {
+      const row = document.createElement("tr");
 
-  tbody.appendChild(row);
-};
+      const employeeId = generateEmployeeId();
+      const employeeDepartment = "Department";
+      const employeeLevel = employee.level;
+      const salaryRange = calculateSalaryRange(employeeLevel);
+      const salary = generateSalary(salaryRange.min, salaryRange.max);
 
-// Create employee instances
-const employees = [
-  new Employee("Ahmad Basha", "Administration", "Senior"),
-  new Employee("Yara Saddam", "Marketing", "Junior"),
-  new Employee("Bahaa Joho", "Development", "Junior"),
-  new Employee("Rand Mohanad", "Finance", "Mid-Senior"),
-];
+      const employeeName = document.createElement("td");
+      employeeName.textContent = employee.fullName;
+      row.appendChild(employeeName);
 
-// Render employees
-employees.forEach((employee) => {
-  employee.render();
-});
+      const employeeIdElem = document.createElement("td");
+      employeeIdElem.textContent = employeeId;
+      row.appendChild(employeeIdElem);
+
+      const employeeDepartmentElem = document.createElement("td");
+      employeeDepartmentElem.textContent = employeeDepartment;
+      row.appendChild(employeeDepartmentElem);
+
+      const employeeLevelElem = document.createElement("td");
+      employeeLevelElem.textContent = employeeLevel;
+      row.appendChild(employeeLevelElem);
+
+      const employeeSalary = document.createElement("td");
+      employeeSalary.textContent = `$${salary}`;
+      row.appendChild(employeeSalary);
+
+      tbody.appendChild(row);
+  });
+
+  employeeTable.appendChild(tbody);
+}
+
+// Call the renderEmployees function to display employee information on the home page
+renderEmployees();
