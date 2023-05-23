@@ -1,20 +1,24 @@
 // Employee Data
 const employees = [
   {
-      fullName: "Ahmad Basha",
-      level: "Senior"
+    fullName: "Ahmad Basha",
+    level: "Senior",
+    department: "Administration"
   },
   {
-      fullName: "Yara Saddam",
-      level: "Junior"
+    fullName: "Yara Saddam",
+    level: "Junior",
+    department: "Marketing"
   },
   {
-      fullName: "Bahaa Joho",
-      level: "Junior"
+    fullName: "Bahaa Joho",
+    level: "Junior",
+    department: "Development"
   },
   {
-      fullName: "Rand Mohanad",
-      level: "Mid-Senior"
+    fullName: "Rand Mohanad",
+    level: "Mid-Senior",
+    department: "Finance"
   }
 ];
 
@@ -26,14 +30,14 @@ function generateEmployeeId() {
 // Calculate the salary range based on employee level
 function calculateSalaryRange(level) {
   switch (level) {
-      case "Senior":
-          return { min: 1500, max: 2000 };
-      case "Mid-Senior":
-          return { min: 1000, max: 1500 };
-      case "Junior":
-          return { min: 500, max: 1000 };
-      default:
-          return { min: 0, max: 0 };
+    case "Senior":
+      return { min: 1500, max: 2000 };
+    case "Mid-Senior":
+      return { min: 1000, max: 1500 };
+    case "Junior":
+      return { min: 500, max: 1000 };
+    default:
+      return { min: 0, max: 0 };
   }
 }
 
@@ -48,35 +52,35 @@ function renderEmployees() {
   const tbody = document.createElement("tbody");
 
   employees.forEach((employee) => {
-      const row = document.createElement("tr");
+    const row = document.createElement("tr");
 
-      const employeeId = generateEmployeeId();
-      const employeeDepartment = "Department";
-      const employeeLevel = employee.level;
-      const salaryRange = calculateSalaryRange(employeeLevel);
-      const salary = generateSalary(salaryRange.min, salaryRange.max);
+    const employeeId = generateEmployeeId();
+    const employeeDepartment = employee.department;
+    const employeeLevel = employee.level;
+    const salaryRange = calculateSalaryRange(employeeLevel);
+    const salary = generateSalary(salaryRange.min, salaryRange.max);
 
-      const employeeName = document.createElement("td");
-      employeeName.textContent = employee.fullName;
-      row.appendChild(employeeName);
+    const employeeName = document.createElement("td");
+    employeeName.textContent = employee.fullName;
+    row.appendChild(employeeName);
 
-      const employeeIdElem = document.createElement("td");
-      employeeIdElem.textContent = employeeId;
-      row.appendChild(employeeIdElem);
+    const employeeIdElem = document.createElement("td");
+    employeeIdElem.textContent = employeeId;
+    row.appendChild(employeeIdElem);
 
-      const employeeDepartmentElem = document.createElement("td");
-      employeeDepartmentElem.textContent = employeeDepartment;
-      row.appendChild(employeeDepartmentElem);
+    const employeeDepartmentElem = document.createElement("td");
+    employeeDepartmentElem.textContent = employeeDepartment;
+    row.appendChild(employeeDepartmentElem);
 
-      const employeeLevelElem = document.createElement("td");
-      employeeLevelElem.textContent = employeeLevel;
-      row.appendChild(employeeLevelElem);
+    const employeeLevelElem = document.createElement("td");
+    employeeLevelElem.textContent = employeeLevel;
+    row.appendChild(employeeLevelElem);
 
-      const employeeSalary = document.createElement("td");
-      employeeSalary.textContent = `$${salary}`;
-      row.appendChild(employeeSalary);
+    const employeeSalary = document.createElement("td");
+    employeeSalary.textContent = `$${salary}`;
+    row.appendChild(employeeSalary);
 
-      tbody.appendChild(row);
+    tbody.appendChild(row);
   });
 
   employeeTable.appendChild(tbody);
