@@ -33,26 +33,17 @@ function generateSalary(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Method to render employee information in a separate table
+// Method to render employee information in a separate card
 Employee.prototype.render = function () {
-  return `<div class="employee-box">
+  return `<div class="card">
     <img src="${this.empImage}" alt="Employee Image">
-    <table>
-      <tr>
-        <th>Full Name</th>
-        <th>Employee ID</th>
-        <th>Department</th>
-        <th>Level</th>
-        <th>Salary</th>
-      </tr>
-      <tr>
-        <td>${this.fullName}</td>
-        <td>${this.employeeId}</td>
-        <td>${this.department}</td>
-        <td>${this.level}</td>
-        <td>$${this.salary}</td>
-      </tr>
-    </table>
+    <div class="card-details">
+      <h2>${this.fullName}</h2>
+      <p>Employee ID: ${this.employeeId}</p>
+      <p>Department: ${this.department}</p>
+      <p>Level: ${this.level}</p>
+      <p>Salary: $${this.salary}</p>
+    </div>
   </div>`;
 };
 
@@ -63,11 +54,11 @@ const employees = [
   new Employee("Tamara Ayoub", "Senior", "Marketing", "https://cdn-icons-png.flaticon.com/512/554/554857.png"),
   new Employee("Safi Walid", "Mid-Senior", "Administration", "https://cdn-icons-png.flaticon.com/512/123/123417.png"),
   new Employee("Omar Zaid", "Senior", "Development", "https://cdn-icons-png.flaticon.com/512/4341/4341874.png"),
-  new Employee("Rana Saleh", "Junior", "Development", "https://cdn-icons-png.flaticon.com/512/2830/2830637.png"),
+  new Employee("Rana Saleh", "Junior", "Development", " https://cdn-icons-png.flaticon.com/512/2830/2830637.png"),
   new Employee("Hadi Ahmad", "Mid-Senior", "Finance", "https://cdn-icons-png.flaticon.com/512/5351/5351547.png"),
 ];
 
-// Render employee information in separate tables
+// Render employee information in separate cards
 function renderEmployees() {
   const employeeList = document.getElementById("employee-list");
 
@@ -77,3 +68,45 @@ function renderEmployees() {
     employeeList.appendChild(employeeContainer);
   });
 }
+// ...
+
+// Render employee information in separate cards
+function renderEmployees() {
+  const employeeList = document.getElementById("employee-list");
+
+  // Group employees by department
+  const departments = {};
+  employees.forEach((employee) => {
+    if (!departments[employee.department]) {
+      departments[employee.department] = [];
+    }
+    departments[employee.department].push(employee);
+  });
+
+  // Render department sections
+  for (const department in departments) {
+    const departmentSection = document.createElement("section");
+    departmentSection.className = "department-section";
+
+    const departmentHeader = document.createElement("h2");
+    departmentHeader.textContent = department;
+    departmentSection.appendChild(departmentHeader);
+
+    const departmentEmployeeList = document.createElement("ul");
+    departmentSection.appendChild(departmentEmployeeList);
+
+    departments[department].forEach((employee) => {
+      const employeeContainer = document.createElement("li");
+      employeeContainer.innerHTML = employee.render();
+      departmentEmployeeList.appendChild(employeeContainer);
+    });
+
+    employeeList.appendChild(departmentSection);
+  }
+}
+
+// ...
+
+
+// Call the renderEmployees function
+renderEmployees();
