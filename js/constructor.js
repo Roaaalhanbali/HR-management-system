@@ -1,11 +1,12 @@
 // Constructor function for Employee
-function Employee(fullName, level, department) {
+function Employee(fullName, level, department, empImage) {
   this.fullName = fullName;
   this.level = level;
   this.department = department;
   this.employeeId = generateEmployeeId();
   this.salaryRange = calculateSalaryRange(this.level);
   this.salary = generateSalary(this.salaryRange.min, this.salaryRange.max);
+  this.empImage = empImage;
 }
 
 // Generate a unique four-digit employee ID
@@ -32,60 +33,24 @@ function generateSalary(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Prototype method to render employee information
+// Method to render employee information in the DOM
 Employee.prototype.render = function () {
-  document.write("<tr>");
-  document.write(`<td>${this.fullName}</td>`);
-  document.write(`<td>${this.employeeId}</td>`);
-  document.write(`<td>${this.department}</td>`);
-  document.write(`<td>${this.level}</td>`);
-  document.write(`<td>$${this.salary}</td>`);
-  document.write("</tr>");
+  document.write(`<div class="employee-box">
+    <img src="${this.empImage}" alt="Employee Image">
+    <p><strong>Name:</strong> ${this.fullName}</p>
+    <p><strong>Department:</strong> ${this.department}</p>
+    <p><strong>Salary:</strong> $${this.salary}</p>
+  </div>`);
 };
 
-// Create instances of Employee
+// Create objects for each employee
 const employees = [
-  new Employee("Ghazi Samer", "Senior", "Administration"),
-  new Employee("Lana Ali", "Senior", "Finance"),
-  new Employee("Tamara Ayoub", "Senior", "Marketing"),
-  new Employee("Safi Walid", "Mid-Senior", "Administration"),
-  new Employee("Omar Zaid", "Senior", "Development"),
-  new Employee("Rana Saleh", "Junior", "Development"),
-  new Employee("Hadi Ahmad", "Mid-Senior", "Finance"),
+  new Employee("John Doe", "Senior", "Administration", "john.jpg"),
+  new Employee("Jane Smith", "Senior", "Finance", "jane.jpg"),
+  new Employee("Mike Johnson", "Junior", "Marketing", "mike.jpg"),
 ];
 
-// Prototype method to render employee information
-function renderEmployees() {
-  document.write("<table>");
-  document.write("<thead>");
-  document.write("<tr>");
-  document.write("<th>Employee Name</th>");
-  document.write("<th>Employee ID</th>");
-  document.write("<th>Department</th>");
-  document.write("<th>Level</th>");
-  document.write("<th>Salary</th>");
-  document.write("</tr>");
-  document.write("</thead>");
-  document.write("<tbody>");
-
-  employees.forEach(function (employee) {
-    employee.render();
-  });
-
-  document.write("</tbody>");
-  document.write("</table>");
-}
-
-// Call the renderEmployees function to display employee information
-renderEmployees.prototype.render = function () {
-  document.write("<tr>");
-  document.write(`<td>${this.fullName}</td>`);
-  document.write(`<td>${this.employeeId}</td>`);
-  document.write(`<td>${this.department}</td>`);
-  document.write(`<td>${this.level}</td>`);
-  document.write(`<td>$${this.salary}</td>`);
-  document.write("</tr>");
-};
-
-// Call the renderEmployees function to display employee information
-renderEmployees();
+// Render employee information
+employees.forEach((employee) => {
+  employee.render();
+});

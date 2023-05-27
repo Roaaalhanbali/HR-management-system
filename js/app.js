@@ -1,11 +1,12 @@
 // Constructor function for Employee
-function Employee(fullName, level, department) {
+function Employee(fullName, level, department, empImage) {
   this.fullName = fullName;
   this.level = level;
   this.department = department;
   this.employeeId = generateEmployeeId();
   this.salaryRange = calculateSalaryRange(this.level);
   this.salary = generateSalary(this.salaryRange.min, this.salaryRange.max);
+  this.empImage = empImage;
 }
 
 // Generate a unique four-digit employee ID
@@ -32,55 +33,47 @@ function generateSalary(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Method to render employee information in the table
-Employee.prototype.render = function (tbody) {
-  const row = document.createElement("tr");
-
-  const employeeName = document.createElement("td");
-  employeeName.textContent = this.fullName;
-  row.appendChild(employeeName);
-
-  const employeeIdElem = document.createElement("td");
-  employeeIdElem.textContent = this.employeeId;
-  row.appendChild(employeeIdElem);
-
-  const employeeDepartmentElem = document.createElement("td");
-  employeeDepartmentElem.textContent = this.department;
-  row.appendChild(employeeDepartmentElem);
-
-  const employeeLevelElem = document.createElement("td");
-  employeeLevelElem.textContent = this.level;
-  row.appendChild(employeeLevelElem);
-
-  const employeeSalary = document.createElement("td");
-  employeeSalary.textContent = `$${this.salary}`;
-  row.appendChild(employeeSalary);
-
-  tbody.appendChild(row);
+// Method to render employee information in a separate table
+Employee.prototype.render = function () {
+  return `<div class="employee-box">
+    <img src="${this.empImage}" alt="Employee Image">
+    <table>
+      <tr>
+        <th>Full Name</th>
+        <th>Employee ID</th>
+        <th>Department</th>
+        <th>Level</th>
+        <th>Salary</th>
+      </tr>
+      <tr>
+        <td>${this.fullName}</td>
+        <td>${this.employeeId}</td>
+        <td>${this.department}</td>
+        <td>${this.level}</td>
+        <td>$${this.salary}</td>
+      </tr>
+    </table>
+  </div>`;
 };
 
-// Create instances of Employee
+// Create objects for each employee
 const employees = [
-  new Employee("Ghazi Samer", "Senior", "Administration"),
-  new Employee("Lana Ali", "Senior", "Finance"),
-  new Employee("Tamara Ayoub", "Senior", "Marketing"),
-  new Employee("Safi Walid", "Mid-Senior", "Administration"),
-  new Employee("Omar Zaid", "Senior", "Development"),
-  new Employee("Rana Saleh", "Junior", "Development"),
-  new Employee("Hadi Ahmad", "Mid-Senior", "Finance"),
+  new Employee("Ghazi Samer", "Senior", "Administration", "ghazi.jpg"),
+  new Employee("Lana Ali", "Senior", "Finance", "lana.jpg"),
+  new Employee("Tamara Ayoub", "Senior", "Marketing", "tamara.jpg"),
+  new Employee("Safi Walid", "Mid-Senior", "Administration", "safi.jpg"),
+  new Employee("Omar Zaid", "Senior", "Development", "omar.jpg"),
+  new Employee("Rana Saleh", "Junior", "Development", "rana.jpg"),
+  new Employee("Hadi Ahmad", "Mid-Senior", "Finance", "hadi.jpg"),
 ];
 
-// Render employee information in the table
+// Render employee information in separate tables
 function renderEmployees() {
-  const employeeTable = document.getElementById("employee-table");
-  const tbody = document.createElement("tbody");
+  const employeeList = document.getElementById("employee-list");
 
   employees.forEach((employee) => {
-    employee.render(tbody);
+    const employeeContainer = document.createElement("li");
+    employeeContainer.innerHTML = employee.render();
+    employeeList.appendChild(employeeContainer);
   });
-
-  employeeTable.appendChild(tbody);
 }
-
-// Call the renderEmployees function to display employee information on the home page
-renderEmployees();
