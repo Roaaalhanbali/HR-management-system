@@ -58,13 +58,13 @@ Employee.prototype.render = function () {
 
 // Create objects for each employee
 const employees = [
-  new Employee("Ghazi Samer", "Senior", "Administration", "ghazi.jpg"),
-  new Employee("Lana Ali", "Senior", "Finance", "lana.jpg"),
-  new Employee("Tamara Ayoub", "Senior", "Marketing", "tamara.jpg"),
-  new Employee("Safi Walid", "Mid-Senior", "Administration", "safi.jpg"),
-  new Employee("Omar Zaid", "Senior", "Development", "omar.jpg"),
-  new Employee("Rana Saleh", "Junior", "Development", "rana.jpg"),
-  new Employee("Hadi Ahmad", "Mid-Senior", "Finance", "hadi.jpg"),
+  new Employee("Ghazi Samer", "Senior", "Administration", "https://cdn-icons-png.flaticon.com/512/1870/1870038.png"),
+  new Employee("Lana Ali", "Senior", "Finance", "https://cdn-icons-png.flaticon.com/512/4974/4974985.png"),
+  new Employee("Tamara Ayoub", "Senior", "Marketing", "https://cdn-icons-png.flaticon.com/512/554/554857.png"),
+  new Employee("Safi Walid", "Mid-Senior", "Administration", "https://cdn-icons-png.flaticon.com/512/123/123417.png"),
+  new Employee("Omar Zaid", "Senior", "Development", "https://cdn-icons-png.flaticon.com/512/4341/4341874.png"),
+  new Employee("Rana Saleh", "Junior", "Development", "https://cdn-icons-png.flaticon.com/512/2830/2830637.png"),
+  new Employee("Hadi Ahmad", "Mid-Senior", "Finance", "https://cdn-icons-png.flaticon.com/512/5351/5351547.png"),
 ];
 
 // Render employee information in separate tables
