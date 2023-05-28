@@ -7,7 +7,7 @@
   --text-color: #443535;
 }
 
-/* Global Styles */
+
 * {
   box-sizing: border-box;
 }
@@ -56,7 +56,7 @@ header ul li a {
   font-weight: 500;
 }
 
-/* Main Styles */
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +118,6 @@ main {
   color: #000000;
 }
 
-/* Custom background colors for each department */
 .department-section.administration {
   background-color: #ffe6cc;
 }
@@ -135,7 +134,7 @@ main {
   background-color: #ccffcc;
 }
 
-/* Footer Styles */
+
 footer {
   background-color: var(--primary-color);
   color: #eaa3a3;
@@ -143,8 +142,29 @@ footer {
   text-align: center;
 }
 
+
+#employees-container {
+  margin-top: 20px;
+}
+
+#employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#employee-table th,
+#employee-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#employee-table th {
+  background-color: #f2f2f2;
+
 footer p {
   margin: 0;
+
 }
 
 footer a {
