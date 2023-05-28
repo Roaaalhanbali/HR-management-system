@@ -65,6 +65,12 @@ function Employee(fullName, level, department, empImage) {
 }
 
 
+// Generate a unique four-digit employee ID
+function generateEmployeeId() {
+  return Math.floor(1000 + Math.random() * 100);
+}
+
+
 // employee ID
 function generateEmployeeID(usedIDs) {
   let minID = 1000;
@@ -74,6 +80,7 @@ function generateEmployeeID(usedIDs) {
 
   while (usedIDs.includes(newID)) {
     newID = Math.floor(Math.random() * (maxID - minID + 1)) + minID;
+
 
 // Calculate the salary range based on employee level
 function calculateSalaryRange(level) {
@@ -189,7 +196,7 @@ function renderEmployees() {
     employeeList.appendChild(employeeContainer);
   });
 }
-// ...
+
 
 // Render employee information in separate cards
 function renderEmployees() {
@@ -226,7 +233,7 @@ function renderEmployees() {
   }
 }
 
-// ...
+
 
 
 // Call the renderEmployees function
