@@ -143,4 +143,23 @@ main img[src*="340901389_209870725080135_1458127718189919734_n.jpg"] {
   width: 40px;
 }
 
+#employees-container {
+  margin-top: 20px;
+}
+
+#employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#employee-table th,
+#employee-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#employee-table th {
+  background-color: #f2f2f2;
+}
 
