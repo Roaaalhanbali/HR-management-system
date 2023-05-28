@@ -11,7 +11,7 @@ function Employee(fullName, level, department, empImage) {
 
 // Generate a unique four-digit employee ID
 function generateEmployeeId() {
-  return Math.floor(1000 + Math.random() * 9000);
+  return Math.floor(1000 + Math.random() * 100);
 }
 
 // Calculate the salary range based on employee level
