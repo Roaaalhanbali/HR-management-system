@@ -116,9 +116,9 @@ header img[src*="DO_IT-removebg-preview.png"] {
 main img[src*="340901389_209870725080135_1458127718189919734_n.jpg"] {
   max-width: 200px;
   height: auto;
-  border: 2px solid #373333;
+  border: 2px solid #333;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(42, 11, 11, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   display: block;
 }
