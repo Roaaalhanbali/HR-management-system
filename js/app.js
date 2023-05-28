@@ -52,7 +52,7 @@ let employees = [
   },
 ];
 
-// Generating employee ID
+// employee ID
 function generateEmployeeID(usedIDs) {
   let minID = 1000;
   let maxID = 1006;
@@ -65,7 +65,7 @@ function generateEmployeeID(usedIDs) {
   return newID;
 }
 
-// Calculating employee salary
+// employee salary
 function calculateSalary(level) {
   let salaryTable = {
     Junior: { min: 500, max: 1000 },
