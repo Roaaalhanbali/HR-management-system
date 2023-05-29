@@ -7,7 +7,6 @@
   --text-color: #443535;
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -55,7 +54,6 @@ header ul li a {
   text-decoration: none;
   font-weight: 500;
 }
-
 
 main {
   display: flex;
@@ -134,14 +132,12 @@ main {
   background-color: #ccffcc;
 }
 
-
 footer {
   background-color: var(--primary-color);
   color: #eaa3a3;
   padding: 10px;
   text-align: center;
 }
-
 
 #employees-container {
   margin-top: 20px;
@@ -161,20 +157,10 @@ footer {
 
 #employee-table th {
   background-color: #f2f2f2;
-
-footer p {
-  margin: 0;
-
+  color: var(--primary-color);
 }
 
-footer a {
-  color: #9f6a6a;
-  margin-left: 10px;
-  text-decoration: none;
+#employee-table td {
+  background-color: #ffffff;
 }
 
-/* Apply Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-body {
-  font-family: 'Roboto', sans-serif;
-}
